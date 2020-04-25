@@ -1,0 +1,23 @@
+.autocomplete-form-field {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.mat-list-item {
+    height: initial;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.list-item:nth-child(even) {
+    background-color: #fff;
+    .old-passages & {
+        background-color: #fafafa;
+    }
+}
+
+.old-passages {
+    margin-bottom: 10px;
+}
