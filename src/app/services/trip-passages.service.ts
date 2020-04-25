@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
+import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TripPassagesService {
+export class TripPassagesService extends BaseService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+      super();
+   }
 
   public getTripPassages(tripId: string, isBus: string): Observable<TripPassages>
   {
-    return this.http.get<TripPassages>('/api/trips/passages', { params: { tripId: tripId, bus: isBus } });
+    return this.http.get<TripPassages>(this.baseUrl + '/api/trips/passages', { params: { tripId: tripId, bus: isBus } });
   }
 }
 

@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
+import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StopsService {
+export class StopsService extends BaseService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { super(); }
 
   public getAutocomplete(value: string): Observable<StopAutocomplete[]> {
-    return this.http.get<StopAutocomplete[]>('/api/stops/autocomplete?', { params: { q: value } });
+    return this.http.get<StopAutocomplete[]>(this.baseUrl + '/api/stops/autocomplete?', { params: { q: value } });
   }
 
   public getPassages(stopId: string): Observable<PassageListItem[]> {
-    return this.http.get<PassageListItem[]>('/api/stops/passages', { params: { stopId: stopId } })
+    return this.http.get<PassageListItem[]>(this.baseUrl + '/api/stops/passages', { params: { stopId: stopId } })
   }
 }
 
